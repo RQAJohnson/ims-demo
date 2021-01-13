@@ -33,7 +33,8 @@ public class ItemDaoMysql implements Dao<Item> {
 			Long itemID = resultSet.getLong("itemID");
 			String title = resultSet.getString("title");
 			Float price = resultSet.getFloat("price");
-			return new Item(itemID, title, price);
+			Integer quantity = resultSet.getInt("quantity");
+			return new Item(itemID, title, price, quantity);
 		}
 
 		/**
