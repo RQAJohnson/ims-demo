@@ -1,6 +1,6 @@
 package com.qa.ims;
 
-import java.io.BufferedReader;
+import java.io.BufferedReader; 
 import java.io.FileReader;
 import java.io.IOException;
 import java.sql.Connection;
@@ -13,9 +13,12 @@ import org.apache.log4j.Logger;
 import com.qa.ims.controller.Action;
 import com.qa.ims.controller.CrudController;
 import com.qa.ims.controller.CustomerController;
+import com.qa.ims.controller.ItemController;
 import com.qa.ims.persistence.dao.CustomerDaoMysql;
+import com.qa.ims.persistence.dao.ItemDaoMysql;
 import com.qa.ims.persistence.domain.Domain;
 import com.qa.ims.services.CustomerServices;
+import com.qa.ims.services.ItemServices;
 import com.qa.ims.utils.Utils;
 
 public class Ims {
@@ -54,7 +57,24 @@ public class Ims {
 		default:
 			break;
 		}
-
+		
+		switch (domain) {
+		case ITEM:
+			ItemController itemController = new ItemController();
+			new ItemServices(new ItemDaoMysql(username, password));
+			doActionI(itemController, action);
+			break;
+		case CUSTOMER:
+			break;
+		case ORDER:
+			break;
+		case STOP:
+			break;
+		default:
+			break;
+			
+		}
+ 
 	}
 
 	public void doAction(CrudController<?> crudController, Action action) {
@@ -76,6 +96,28 @@ public class Ims {
 		default:
 			break;
 		}
+			
+	}
+		public void doActionI(CrudController<?> ItemController, Action action) {
+			switch (action) {
+			case CREATE:
+				ItemController.create();
+				break;
+			case READ:
+				ItemController.readAll();
+				break;
+			case UPDATE:
+				ItemController.update();
+				break;
+			case DELETE:
+				ItemController.delete();
+				break;
+			case RETURN:
+				break;
+			default:
+				break;
+			}
+		
 	}
 
 	/**
