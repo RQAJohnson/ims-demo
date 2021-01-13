@@ -1,25 +1,30 @@
 package com.qa.ims.controller;
 
-import java.util.List;
+import java.util.List; 
 
 import org.apache.log4j.Logger;
 
-import com.qa.ims.persistence.domain.Customer;
+import com.qa.ims.persistence.domain.Item;
 import com.qa.ims.services.CrudServices;
 import com.qa.ims.utils.Utils;
 
-public class itemController implements CrudController<Item> {
+public class ItemController implements CrudController<Item> {
+	
 public static final Logger LOGGER = Logger.getLogger(ItemController.class);
 	
-	private CrudServices<Item> customerService;
-	
-	public ItemController(CrudServices<Item> itemService) {
-		this.itemService = itemService;
-	}
+	private CrudServices<Item> itemService;
 	
 
 	String getInput() {
 		return Utils.getInput();
+	}
+	
+	Float getinput() {
+		return Utils.getinput();
+	}
+	
+	Integer getinpuT() {
+		return Utils.getinpuT();
 	}
 	
 	/**
@@ -27,11 +32,11 @@ public static final Logger LOGGER = Logger.getLogger(ItemController.class);
 	 */
 	@Override
 	public List<Item> readAll() {
-		List<Item> items = itemService.readAll();
-		for(Item items: items) {
-			LOGGER.info(item.toString());
+		List<Item> item = itemService.readAll();
+		for(Item items: item) {
+			LOGGER.info(items.toString());
 		}
-		return items;
+		return item;
 	}
 
 	/**
@@ -39,12 +44,14 @@ public static final Logger LOGGER = Logger.getLogger(ItemController.class);
 	 */
 	@Override
 	public Item create() {
-		LOGGER.info("Please enter a first name");
-		String firstName = getInput();
-		LOGGER.info("Please enter a surname");
-		String surname = getInput();
-		Item item = itemService.create(new Item(firstName, surname));
-		LOGGER.info("Customer created");
+		LOGGER.info("Please Enter a Title of game");
+		String title = getInput();
+		LOGGER.info("Please enter a Price");
+		Float price = getinput();
+		LOGGER.info("Please enter the Quantity");
+		Integer quantity = getinpuT();
+		Item item = itemService.create(new Item(title, price, quantity));
+		LOGGER.info("Item Added");
 		return item;
 	}
 
@@ -53,14 +60,16 @@ public static final Logger LOGGER = Logger.getLogger(ItemController.class);
 	 */
 	@Override
 	public Item update() {
-		LOGGER.info("Please enter the id of the customer you would like to update");
-		Long id = Long.valueOf(getInput());
-		LOGGER.info("Please enter a first name");
-		String firstName = getInput();
-		LOGGER.info("Please enter a surname");
-		String surname = getInput();
-		Item item = itemService.update(new Item(id, firstName, surname));
-		LOGGER.info("Customer Updated");
+		LOGGER.info("Please enter the ID of the item you want to update");
+		Long itemID = Long.valueOf(getInput());
+		LOGGER.info("Please enter a Title");
+		String title = getInput();
+		LOGGER.info("Please enter a Price");
+		Float price = getinput();
+		LOGGER.info("Please Enter Your new Quantity");
+		Integer quantity = getinpuT();
+		Item item = itemService.update(new Item(itemID, title, price, quantity));
+		LOGGER.info("Item Updated");
 		return item;
 	}
 
@@ -69,7 +78,7 @@ public static final Logger LOGGER = Logger.getLogger(ItemController.class);
 	 */
 	@Override
 	public void delete() {
-		LOGGER.info("Please enter the id of the customer you would like to delete");
+		LOGGER.info("Please enter the id of the item you wish to delete");
 		Long id = Long.valueOf(getInput());
 		itemService.delete(id);
 	}
