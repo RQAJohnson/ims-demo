@@ -82,14 +82,14 @@ public class ItemDaoMysql implements Dao<Item> {
 		public Item create(Item item) {
 			try (Connection connection = DriverManager.getConnection(jdbcConnectionUrl, username, password);
 					Statement statement = connection.createStatement();) {
-				statement.executeUpdate("insert into items(title, price) values('" + item.getTitle()
-						+ "','" + item.getPrice() + "')");
+				statement.executeUpdate("insert into items(title, price, quantity) values('" + item.getTitle()
+						+ "','" + item.getPrice() + "')" + item.getQuantity() + "')");
 				return readLatest();
 			} catch (Exception e) {
 				LOGGER.debug(e.getStackTrace());
 				LOGGER.error(e.getMessage());
 			}
-			return null;
+			return item;
 		}
 
 		public Item readItem(Long id) {
