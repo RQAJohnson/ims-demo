@@ -6,7 +6,7 @@ public class Item {
 	private String title;
 	private Float price;
 
-	public Item(String title, String surname) {
+	public Item(String title, Float price) {
 		this.title = title;
 		this.price = price;
 	}
