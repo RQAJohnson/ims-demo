@@ -15,7 +15,7 @@ public class ItemDaoMysql implements Dao<Item> {
 	public static final Logger LOGGER = Logger.getLogger(ItemDaoMysql.class);
 	private String jdbcConnectionUrl;
 	private String username;
-	private String password; 
+	private String password;  
 	
 	public ItemDaoMysql(String username, String password) {
 		this.jdbcConnectionUrl = "jdbc:mysql://localhost:3306/ims";
@@ -121,7 +121,7 @@ public class ItemDaoMysql implements Dao<Item> {
 			} catch (Exception e) {
 				LOGGER.debug(e.getStackTrace());
 				LOGGER.error(e.getMessage());
-			}
+			} 
 			return null;
 		}
 
