@@ -4,20 +4,17 @@ public class Item {
 	
 	private Long itemID;
 	private String title;
-	private Float price;
-	private Integer quantity;
+	private Double price;
 
-	public Item(String title, Float price, Integer quantity) {
+	public Item(String title, Double price) {
 		this.title = title;
 		this.price = price;
-		this.quantity = quantity;
 	}
 
-	public Item(Long id,String title, Float price, Integer quantity) {
+	public Item(Long id,String title, Double price) {
 		this.itemID = id;
 		this.title = title;
 		this.price = price;
-		this.quantity = quantity;
 	}
 
 	public Long getId() {
@@ -36,24 +33,18 @@ public class Item {
 		this.title = title;
 	}
 
-	public Float getPrice() {
+	public Double getPrice() {
 		return price;
 	}
 
-	public void setPrice(Float price) {
+	public void setPrice(Double price) {
 		this.price = price;
 	}
-	public Integer getQuantity() {
-		return quantity;
-	}
 	
-	public void setQuantity(Integer quantity) {
-		this.quantity = quantity;
-	}
 	
 
 	public String toString() {
-		return "id:" + itemID + " name of item:" + title + " amount:" + price + "quantity" + quantity;
+		return "id:" + itemID + " name of item:" + title + " amount:" + price;
 	}
 
 	@Override
@@ -63,7 +54,6 @@ public class Item {
 		result = prime * result + ((title == null) ? 0 : title.hashCode());
 		result = prime * result + ((itemID == null) ? 0 : itemID.hashCode());
 		result = prime * result + ((price == null) ? 0 : price.hashCode());
-		result = prime * result + ((quantity == null) ? 0 : quantity.hashCode());
 		return result;
 	}
 
@@ -90,11 +80,6 @@ public class Item {
 			if (other.price != null)
 				return false;
 		} else if (!price.equals(other.price))
-			return false;
-		if (quantity == null) {
-			if(other.quantity != null)
-				return false;
-		}else if (!quantity.equals(other.quantity))
 			return false;
 		return true;
 	}
