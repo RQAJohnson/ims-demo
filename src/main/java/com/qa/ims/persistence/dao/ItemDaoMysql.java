@@ -15,12 +15,12 @@ public class ItemDaoMysql implements Dao<Item> {
 	public static final Logger LOGGER = Logger.getLogger(ItemDaoMysql.class);
 	private String jdbcConnectionUrl;
 	private String username;
-	private String password;
+	private String password; 
 	
 	public ItemDaoMysql(String username, String password) {
 		this.jdbcConnectionUrl = "jdbc:mysql://localhost:3306/ims";
 		this.username = username;
-		this.password = password;
+		this.password = password; 
 		
 		}
 	public ItemDaoMysql(String jdbcConnectionUrl, String username, String password) {
@@ -35,7 +35,7 @@ public class ItemDaoMysql implements Dao<Item> {
 			Double price = resultSet.getDouble("price");
 			return new Item(itemID, title, price);
 		}
-
+// after each method 'RETURN' back to start
 		/**
 		 * Reads all customers from the database
 		 * 
@@ -62,7 +62,7 @@ public class ItemDaoMysql implements Dao<Item> {
 		public Item readLatest() {
 			try (Connection connection = DriverManager.getConnection(jdbcConnectionUrl, username, password);
 					Statement statement = connection.createStatement();
-					ResultSet resultSet = statement.executeQuery("SELECT FROM items ORDER BY id DESC LIMIT 1");) {
+					ResultSet resultSet = statement.executeQuery("SELECT * FROM items ORDER BY itemID DESC LIMIT 1");) {
 				resultSet.next();
 				return itemFromResultSet(resultSet);
 			} catch (Exception e) {
@@ -94,7 +94,7 @@ public class ItemDaoMysql implements Dao<Item> {
 		public Item readItem(Long id) {
 			try (Connection connection = DriverManager.getConnection(jdbcConnectionUrl, username, password);
 					Statement statement = connection.createStatement();
-					ResultSet resultSet = statement.executeQuery("SELECT FROM items where id = " + id);) {
+					ResultSet resultSet = statement.executeQuery("SELECT * FROM items where itemID = " + id);) {
 				resultSet.next();
 				return itemFromResultSet(resultSet);
 			} catch (Exception e) {
@@ -134,11 +134,12 @@ public class ItemDaoMysql implements Dao<Item> {
 		public void delete(long id) {
 			try (Connection connection = DriverManager.getConnection(jdbcConnectionUrl, username, password);
 					Statement statement = connection.createStatement();) {
-				statement.executeUpdate("delete from items where id = " + id);
+				statement.executeUpdate("DELETE FROM items where itemID = " + id);
 			} catch (Exception e) {
 				LOGGER.debug(e.getStackTrace());
 				LOGGER.error(e.getMessage());
 			}
+			System.out.println("Item Deleted");
 		}
 		
 }
