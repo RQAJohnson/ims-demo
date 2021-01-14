@@ -14,18 +14,20 @@ public static final Logger LOGGER = Logger.getLogger(ItemController.class);
 	
 	private CrudServices<Item> itemService;
 	
+	
+	public ItemController(CrudServices<Item> itemService) {
+		this.itemService = itemService;
+	}
 
 	String getInput() {
 		return Utils.getInput();
 	}
 	
-	Float getinput() {
+	Double getinput() {
 		return Utils.getinput();
 	}
 	
-	Integer getinpuT() {
-		return Utils.getinpuT();
-	}
+	
 	
 	/**
 	 * Reads all customers to the logger
@@ -47,13 +49,11 @@ public static final Logger LOGGER = Logger.getLogger(ItemController.class);
 		LOGGER.info("Please Enter a Title of game");
 		String title = getInput();
 		LOGGER.info("Please enter a Price");
-		Float price = getinput();
-		LOGGER.info("Please enter the Quantity");
-		Integer quantity = getinpuT();
-		Item item = itemService.create(new Item(title, price, quantity));
+		Double price = getinput();
+		Item item = itemService.create(new Item(title, price));
 		LOGGER.info("Item Added");
 		return item;
-	}
+}
 
 	/**
 	 * Updates an existing customer by taking in user input
@@ -65,10 +65,8 @@ public static final Logger LOGGER = Logger.getLogger(ItemController.class);
 		LOGGER.info("Please enter a Title");
 		String title = getInput();
 		LOGGER.info("Please enter a Price");
-		Float price = getinput();
-		LOGGER.info("Please Enter Your new Quantity");
-		Integer quantity = getinpuT();
-		Item item = itemService.update(new Item(itemID, title, price, quantity));
+		Double price = getinput();
+		Item item = itemService.update(new Item(itemID, title, price));
 		LOGGER.info("Item Updated");
 		return item;
 	}
