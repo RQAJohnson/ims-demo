@@ -49,6 +49,9 @@ public class Ims {
 			doAction(customerController, action);
 			break;
 		case ITEM:
+			ItemController itemController = new ItemController(
+			new ItemServices(new ItemDaoMysql(username, password)));
+			doAction(itemController, action);
 			break;
 		case ORDER:
 			break;
@@ -58,23 +61,6 @@ public class Ims {
 			break;
 		}
 		
-		switch (domain) {
-		case ITEM:
-			ItemController itemController = new ItemController();
-			new ItemServices(new ItemDaoMysql(username, password));
-			doActionI(itemController, action);
-			break;
-		case CUSTOMER:
-			break;
-		case ORDER:
-			break;
-		case STOP:
-			break;
-		default:
-			break;
-			
-		}
- 
 	}
 
 	public void doAction(CrudController<?> crudController, Action action) {
@@ -98,27 +84,8 @@ public class Ims {
 		}
 			
 	}
-		public void doActionI(CrudController<?> ItemController, Action action) {
-			switch (action) {
-			case CREATE:
-				ItemController.create();
-				break;
-			case READ:
-				ItemController.readAll();
-				break;
-			case UPDATE:
-				ItemController.update();
-				break;
-			case DELETE:
-				ItemController.delete();
-				break;
-			case RETURN:
-				break;
-			default:
-				break;
-			}
 		
-	}
+	
 
 	/**
 	 * To initialise the database schema. DatabaseConnectionUrl will default to
