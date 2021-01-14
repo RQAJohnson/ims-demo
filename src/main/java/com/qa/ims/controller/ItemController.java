@@ -17,8 +17,8 @@ public static final Logger LOGGER = Logger.getLogger(ItemController.class);
 	
 	public ItemController(CrudServices<Item> itemService) {
 		this.itemService = itemService;
-	}
-
+	} 
+ 
 	String getInput() {
 		return Utils.getInput();
 	}
@@ -26,7 +26,12 @@ public static final Logger LOGGER = Logger.getLogger(ItemController.class);
 	Double getinput() {
 		return Utils.getinput();
 	}
+		
+	Long getinpuT() {
+		return Utils.getinpuT();
+	}
 	
+
 	
 	
 	/**
@@ -61,7 +66,7 @@ public static final Logger LOGGER = Logger.getLogger(ItemController.class);
 	@Override
 	public Item update() {
 		LOGGER.info("Please enter the ID of the item you want to update");
-		Long itemID = Long.valueOf(getInput());
+		Long itemID = Long.valueOf(getinpuT());
 		LOGGER.info("Please enter a Title");
 		String title = getInput();
 		LOGGER.info("Please enter a Price");
@@ -77,7 +82,7 @@ public static final Logger LOGGER = Logger.getLogger(ItemController.class);
 	@Override
 	public void delete() {
 		LOGGER.info("Please enter the id of the item you wish to delete");
-		Long id = Long.valueOf(getInput());
+		Long id = Long.valueOf(getinpuT());
 		itemService.delete(id);
 	}
 
