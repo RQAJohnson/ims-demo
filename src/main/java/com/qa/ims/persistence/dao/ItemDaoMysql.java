@@ -32,9 +32,8 @@ public class ItemDaoMysql implements Dao<Item> {
 		Item itemFromResultSet(ResultSet resultSet) throws SQLException {
 			Long itemID = resultSet.getLong("itemID");
 			String title = resultSet.getString("title");
-			Float price = resultSet.getFloat("price");
-			Integer quantity = resultSet.getInt("quantity");
-			return new Item(itemID, title, price, quantity);
+			Double price = resultSet.getDouble("price");
+			return new Item(itemID, title, price);
 		}
 
 		/**
@@ -82,14 +81,14 @@ public class ItemDaoMysql implements Dao<Item> {
 		public Item create(Item item) {
 			try (Connection connection = DriverManager.getConnection(jdbcConnectionUrl, username, password);
 					Statement statement = connection.createStatement();) {
-				statement.executeUpdate("insert into items(title, price, quantity) values('" + item.getTitle()
-						+ "','" + item.getPrice() + "')" + item.getQuantity() + "')");
+				statement.executeUpdate("insert into items(title, price) values('" + item.getTitle()
+						+ "','" + item.getPrice() + "')");
 				return readLatest();
 			} catch (Exception e) {
 				LOGGER.debug(e.getStackTrace());
 				LOGGER.error(e.getMessage());
 			}
-			return item;
+			return null;
 		}
 
 		public Item readItem(Long id) {
