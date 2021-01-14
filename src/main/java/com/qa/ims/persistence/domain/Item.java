@@ -5,7 +5,7 @@ public class Item {
 	private Long itemID;
 	private String title;
 	private Double price;
-
+ 
 	public Item(String title, Double price) {
 		this.title = title;
 		this.price = price;
