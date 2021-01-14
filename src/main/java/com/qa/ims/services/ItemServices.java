@@ -14,7 +14,7 @@ private Dao<Item> itemDao;
 		this.itemDao = itemDao;
 	}
 	
-	public List<Item> readAll() {
+	public List<Item> readAll() {  
 		return itemDao.readAll();
 	}
 
