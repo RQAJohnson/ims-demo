@@ -19,16 +19,10 @@ import com.qa.ims.services.ItemServices;
 
 @RunWith(MockitoJUnitRunner.class)
 public class ItemControllerTest { 
-	/**
-	 *  The thing I want to fake functionlity for
-	 */
+	
 	@Mock
 	private ItemServices itemServices;
 	
-	/**
-	 * Spy is used because i want to mock some methods inside the item I'm testing
-	 * InjectMocks uses dependency injection to insert the mock into the customer controller
-	 */
 	@Spy
 	@InjectMocks
 	private ItemController itemController;
@@ -53,9 +47,6 @@ public class ItemControllerTest {
 		itemController.create();
 		return;
 }
-	/**
-	 * 
-	 */
 	@Test
 	public void updateTest() { 
 		Long id = 1L;
@@ -68,9 +59,6 @@ public class ItemControllerTest {
 		return;
 }
 
-	/**
-	 * Delete doesn't return anything, so we can just verify that it calls the delete method
-	 */
 	@Test
 	public void deleteTest() {
 		Long id = 1L;
