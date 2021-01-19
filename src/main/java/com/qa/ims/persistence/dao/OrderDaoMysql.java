@@ -33,9 +33,8 @@ public class OrderDaoMysql implements Dao<Order> {
 		}	
 	Order orderFromResultSet(ResultSet resultSet) throws SQLException {
 		Long orderID = resultSet.getLong("orderID");
-		Long itemID = resultSet.getLong("itemID");
 		Long customerID = resultSet.getLong("customerID");
-		return new Order(orderID, itemID, customerID);
+		return new Order(orderID, customerID);
 	}
 	
 	Order orderlineFromResultSet(ResultSet resultSet) throws SQLException {
@@ -79,7 +78,7 @@ public class OrderDaoMysql implements Dao<Order> {
 	public Order create(Order order) {
 		try (Connection connection = DriverManager.getConnection(jdbcConnectionUrl, username, password);
 				Statement statement = connection.createStatement();) {
-			statement.executeUpdate("insert into orders(customerID) values(" + order.getCustomerID());
+			statement.executeUpdate("insert into orders(customerID) values(" + order.getCustomerID() + ")");
 			return readLatest();
 		} catch (Exception e) {
 			LOGGER.debug(e.getStackTrace());
@@ -131,8 +130,8 @@ public class OrderDaoMysql implements Dao<Order> {
 		Order order = new Order();
 		try (Connection connection = DriverManager.getConnection(jdbcConnectionUrl, username, password);
 				Statement statement = connection.createStatement();
-				ResultSet resultSet = statement.executeQuery("SELECT ol_orderID FROM orderline where orderID = " 
-				+ order.getOrderID());) {
+				ResultSet resultSet = statement.executeQuery("SELECT ol_orderID FROM orderline where orderID = (" 
+				+ order.getOrderID() + ")")) {
 			resultSet.next();
 			return orderlineFromResultSet(resultSet);
 		} catch (Exception e) {
