@@ -66,10 +66,15 @@ public static final Logger LOGGER = Logger.getLogger(OrderController.class);
 	
 //	<!-------------ADD/DELETE item--------------!>
 //	List<Order> listA = new ArrayList<>();
+//	system.out.println("Add an item to your order");
 //	
 //	listA.add(orderID);
 //	listA.add(orderID);
 //	listA.add(orderID);
+	
+//	system.out.println("Delete an item from your order");
+//	listA.remove(itemID);
+//  listA.remove(itemID);
 //----------------------------------------------------
 	
 //	List<Order> odr= orderService.create();
