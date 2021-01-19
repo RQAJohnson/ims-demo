@@ -40,16 +40,16 @@ public static final Logger LOGGER = Logger.getLogger(OrderController.class);
 		Long id = Long.valueOf(getInput());
 		Order order = orderService.create(new Order(id));		
 		LOGGER.info("Your order ID is: " + order.getOrderID());
-		LOGGER.info("Order Placed!");
+		LOGGER.info("Order Has Been Placed!");
 //		Something supposed to be here
 		LOGGER.info("Enter your order ID: ");
 		Long orderID = getinpuT();
 		LOGGER.info("Enter Item ID: ");
 		Long itemID = Long.valueOf(getInput());
-//		Something supposed to be here > lead to update 
-		LOGGER.info("Orderline Created");
 		Order order1 = orderService.orderline(new Order(itemID, orderID));
 		return order1;
+//		LOGGER.info("Orderline Created");
+//		LOGGER.info("Do you wish to update your order?")
 	}
 	
 	@Override
@@ -59,6 +59,9 @@ public static final Logger LOGGER = Logger.getLogger(OrderController.class);
 		LOGGER.info("Enter your customer ID: ");
 		Long customerID = Long.valueOf(getInput());
 //		A while loop to add/ delete an item from an order
+//		def addOrder(orderID)
+//		if addOrder = 
+//		
 		Order order = orderService.update(new Order(customerID, orderID));
 		
 //		WHILE LOOP/ IF STATEMENT 
