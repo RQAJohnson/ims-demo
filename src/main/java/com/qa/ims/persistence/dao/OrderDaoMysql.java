@@ -2,6 +2,7 @@ package com.qa.ims.persistence.dao;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -123,7 +124,20 @@ public class OrderDaoMysql implements Dao<Order> {
 			LOGGER.debug(e.getStackTrace());
 			LOGGER.error(e.getMessage());
 		} 
+//		String sql = "SELECT orderID" + 
+//				"FROM orders" + 
+//				"WHERE orderID = ?";
+//		try (
+//			Connection connection = DriverManager.getConnection(jdbcConnectionUrl, username, password);
+//				PreparedStatement preparedstatement = connection.prepareStatement(sql)) {
+//				Long orderID = 4;
+//				preparedstatement.setLong(1, orderID);
+//			ResultSet rs = preparedstatement.executeQuery(sql);
+//			
+//	}
+		
 		return null;
+		
 	}
 	
 	public Order orderlinereadOrder() {
@@ -138,7 +152,7 @@ public class OrderDaoMysql implements Dao<Order> {
 			LOGGER.debug(e.getStackTrace());
 			LOGGER.error(e.getMessage());
 		}
-		return null;
+		return null;	
 	}
 		
 	@Override
