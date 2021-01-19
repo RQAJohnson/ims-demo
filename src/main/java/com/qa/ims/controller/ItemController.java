@@ -1,9 +1,7 @@
 package com.qa.ims.controller;
 
-import java.util.List; 
-
+import java.util.List;   
 import org.apache.log4j.Logger;
-
 import com.qa.ims.persistence.domain.Item;
 import com.qa.ims.services.CrudServices;
 import com.qa.ims.utils.Utils;
@@ -19,8 +17,8 @@ public static final Logger LOGGER = Logger.getLogger(ItemController.class);
 		this.itemService = itemService;
 	} 
  
-	String getInput() {
-		return Utils.getInput();
+	String getInput() { 
+		return Utils.getInput(); 
 	}
 	
 	Double getinput() {
@@ -32,11 +30,6 @@ public static final Logger LOGGER = Logger.getLogger(ItemController.class);
 	}
 	
 
-	
-	
-	/**
-	 * Reads all customers to the logger
-	 */
 	@Override
 	public List<Item> readAll() {
 		List<Item> item = itemService.readAll();
@@ -46,9 +39,6 @@ public static final Logger LOGGER = Logger.getLogger(ItemController.class);
 		return item;
 	}
 
-	/**
-	 * Creates a customer by taking in user input
-	 */
 	@Override
 	public Item create() {
 		LOGGER.info("Please Enter a Title of game");
@@ -60,9 +50,6 @@ public static final Logger LOGGER = Logger.getLogger(ItemController.class);
 		return item;
 }
 
-	/**
-	 * Updates an existing customer by taking in user input
-	 */
 	@Override
 	public Item update() {
 		LOGGER.info("Please enter the ID of the item you want to update");
@@ -76,9 +63,6 @@ public static final Logger LOGGER = Logger.getLogger(ItemController.class);
 		return item;
 	}
 
-	/**
-	 * Deletes an existing customer by the id of the customer
-	 */
 	@Override
 	public void delete() {
 		LOGGER.info("Please enter the id of the item you wish to delete");
