@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 import org.apache.log4j.Logger;
 import com.qa.ims.persistence.domain.Item;
+import com.qa.ims.persistence.domain.Order;
 
 public class ItemDaoMysql implements Dao<Item> {
 	
@@ -35,12 +36,7 @@ public class ItemDaoMysql implements Dao<Item> {
 			Double price = resultSet.getDouble("price");
 			return new Item(itemID, title, price);
 		}
-// after each method 'RETURN' back to start
-		/**
-		 * Reads all customers from the database
-		 * 
-		 * @return A list of customers
-		 */
+
 		@Override
 		public List<Item> readAll() {
 			try (Connection connection = DriverManager.getConnection(jdbcConnectionUrl, username, password);
@@ -72,11 +68,6 @@ public class ItemDaoMysql implements Dao<Item> {
 			return null;
 		}
 
-		/**
-		 * Creates a customer in the database
-		 * 
-		 * @param customer - takes in a customer object. id will be ignored
-		 */
 		@Override
 		public Item create(Item item) {
 			try (Connection connection = DriverManager.getConnection(jdbcConnectionUrl, username, password);
@@ -104,13 +95,6 @@ public class ItemDaoMysql implements Dao<Item> {
 			return null;
 		}
 
-		/**
-		 * Updates a customer in the database
-		 * 
-		 * @param customer - takes in a customer object, the id field will be used to
-		 *                 update that customer in the database
-		 * @return
-		 */
 		@Override
 		public Item update(Item item) {
 			try (Connection connection = DriverManager.getConnection(jdbcConnectionUrl, username, password);
@@ -125,11 +109,6 @@ public class ItemDaoMysql implements Dao<Item> {
 			return null;
 		}
 
-		/**
-		 * Deletes a customer in the database
-		 * 
-		 * @param id - id of the customer
-		 */
 		@Override
 		public void delete(long id) {
 			try (Connection connection = DriverManager.getConnection(jdbcConnectionUrl, username, password);
@@ -140,6 +119,11 @@ public class ItemDaoMysql implements Dao<Item> {
 				LOGGER.error(e.getMessage());
 			}
 			System.out.println("Item Deleted");
+		}
+		@Override
+		public Order orderline(Order order) {
+			// TODO Auto-generated method stub
+			return null;
 		}
 		
 }
