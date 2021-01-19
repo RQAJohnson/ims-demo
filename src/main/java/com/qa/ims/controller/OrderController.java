@@ -1,10 +1,8 @@
 package com.qa.ims.controller;
 
-import java.util.ArrayList;
 import java.util.List; 
 import org.apache.log4j.Logger;
 
-import com.qa.ims.persistence.domain.Item;
 import com.qa.ims.persistence.domain.Order;
 import com.qa.ims.services.CrudServices;
 import com.qa.ims.utils.Utils;
@@ -40,10 +38,17 @@ public static final Logger LOGGER = Logger.getLogger(OrderController.class);
 	public Order create() {
 		LOGGER.info("Please Enter Your Customer ID: ");
 		Long id = Long.valueOf(getInput());
-		Order order = orderService.create(new Order(id));
+		Order order = orderService.create(new Order(id));		
+		LOGGER.info("Your order ID is: " + order.getOrderID());
 		LOGGER.info("Order Placed!");
-		return order;
-	}	
+		LOGGER.info("Enter your order ID: ");
+		Long orderID = getinpuT();
+		LOGGER.info("Enter Item ID: ");
+		Long itemID = Long.valueOf(getInput());
+		Order order1 = orderService.orderline(new Order(itemID, orderID));
+		return order1;
+	}
+	
 	@Override
 	public Order update() {
 		LOGGER.info("Enter the ID of the order you wish to update: ");
@@ -53,38 +58,14 @@ public static final Logger LOGGER = Logger.getLogger(OrderController.class);
 		Order order = orderService.update(new Order(customerID, orderID));
 		LOGGER.info("Order Successfully Updated");
 		return order;
-	}
+	}	
+//		@SuppressWarnings("unchecked")
+//		List<Order> odr = (List<Order>) orderline(); {
+//		Long itemID = getinpuT();
+//		odr.add(itemID);
+//		odr.remove(itemID);
+//		}
 	
-	public Order orderline() {
-		LOGGER.info("Enter your order ID: ");
-		Long orderID = getinpuT();
-		LOGGER.info("Enter Item ID: ");
-		Long itemID = Long.valueOf(getInput());
-		Order order = orderService.orderline(new Order(itemID, orderID));
-		return order;
-	}
-	
-//	<!-------------ADD/DELETE item--------------!>
-//	List<Order> listA = new ArrayList<>();
-//	system.out.println("Add an item to your order");
-//	
-//	listA.add(orderID);
-//	listA.add(orderID);
-//	listA.add(orderID);
-	
-//	system.out.println("Delete an item from your order");
-//	listA.remove(itemID);
-//  listA.remove(itemID);
-//----------------------------------------------------
-	
-//	List<Order> odr= orderService.create();
-//	Order itemID;
-//	odr.add(itemID);
-	
-//	odr.remove(itemID);
-//	-----------------------------------------------
-	
-
 	@Override
 	public void delete() {
 		LOGGER.info("Please Enter the OrderID you would like to delete: ");
@@ -94,3 +75,25 @@ public static final Logger LOGGER = Logger.getLogger(OrderController.class);
 	}
 	
 }
+	
+//   <!-------------ADD/DELETE item--------------!>
+//	@SuppressWarnings("unchecked")
+//	List<Order> odr = (List<Order>) orderline(); {
+//	Order itemID = null;
+//	odr.add(itemID);
+//	odr.remove(itemID);
+//	}
+
+//  ----------------------------------------------------------
+//		List<Order> listA = new ArrayList<>() {
+////		system.out.println("Add an item to your order");
+//		listA.add(itemID);
+//		listA.add(itemID);
+//		listA.add(itemID);
+//		
+////		system.out.println("Delete an item from your order");
+//		listA.remove(itemID);
+//		listA.remove(itemID);
+//		return order;
+//	}
+	
