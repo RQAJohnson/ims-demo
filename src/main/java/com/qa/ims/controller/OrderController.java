@@ -41,10 +41,13 @@ public static final Logger LOGGER = Logger.getLogger(OrderController.class);
 		Order order = orderService.create(new Order(id));		
 		LOGGER.info("Your order ID is: " + order.getOrderID());
 		LOGGER.info("Order Placed!");
+//		Something supposed to be here
 		LOGGER.info("Enter your order ID: ");
 		Long orderID = getinpuT();
 		LOGGER.info("Enter Item ID: ");
 		Long itemID = Long.valueOf(getInput());
+//		Something supposed to be here > lead to update 
+		LOGGER.info("Orderline Created");
 		Order order1 = orderService.orderline(new Order(itemID, orderID));
 		return order1;
 	}
@@ -55,17 +58,22 @@ public static final Logger LOGGER = Logger.getLogger(OrderController.class);
 		Long orderID = getinpuT();
 		LOGGER.info("Enter your customer ID: ");
 		Long customerID = Long.valueOf(getInput());
+//		A while loop to add/ delete an item from an order
 		Order order = orderService.update(new Order(customerID, orderID));
-		LOGGER.info("Order Successfully Updated");
-		return order;
-	}	
+		
+//		WHILE LOOP/ IF STATEMENT 
 //		@SuppressWarnings("unchecked")
 //		List<Order> odr = (List<Order>) orderline(); {
 //		Long itemID = getinpuT();
 //		odr.add(itemID);
 //		odr.remove(itemID);
 //		}
-	
+//		ADD ORDER
+		
+		LOGGER.info("Order Successfully Updated");
+		return order; 
+		
+	}	
 	@Override
 	public void delete() {
 		LOGGER.info("Please Enter the OrderID you would like to delete: ");
@@ -75,7 +83,6 @@ public static final Logger LOGGER = Logger.getLogger(OrderController.class);
 	}
 	
 }
-	
 //   <!-------------ADD/DELETE item--------------!>
 //	@SuppressWarnings("unchecked")
 //	List<Order> odr = (List<Order>) orderline(); {
