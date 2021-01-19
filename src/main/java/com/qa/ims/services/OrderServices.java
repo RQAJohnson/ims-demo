@@ -17,11 +17,11 @@ private Dao<Order> orderDao;
 		return orderDao.readAll();
 	}
  
-	public Order create(Order order) {
+	public Order create(Order order) { 
 		return orderDao.create(order);
 	}
-	public Order orderline (Order order) {
-		return orderDao.create(order);
+	public Order orderline (Order orderline) {
+		return orderDao.create(orderline);
 	}
 
 	public Order update(Order order) {
