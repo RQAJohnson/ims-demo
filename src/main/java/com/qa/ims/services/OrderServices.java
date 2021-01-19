@@ -16,8 +16,11 @@ private Dao<Order> orderDao;
 	public List<Order> readAll() {
 		return orderDao.readAll();
 	}
-
+ 
 	public Order create(Order order) {
+		return orderDao.create(order);
+	}
+	public Order orderline (Order order) {
 		return orderDao.create(order);
 	}
 
@@ -29,5 +32,5 @@ private Dao<Order> orderDao;
 		orderDao.delete(id);
 	}
 	
-
 }
+	
