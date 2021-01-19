@@ -40,26 +40,10 @@ public static final Logger LOGGER = Logger.getLogger(OrderController.class);
 	public Order create() {
 		LOGGER.info("Please Enter Your Customer ID: ");
 		Long id = Long.valueOf(getInput());
-		LOGGER.info("Enter the item ID :");
-//		Long itemID = getinpuT();
-		Long orderID = getinpuT();
 		Order order = orderService.create(new Order(id));
 		LOGGER.info("Order Placed!");
 		return order;
-	}
-	
-//	
-	public Order orderline() {
-		LOGGER.info("Enter the ID of the order you wish to update: ");
-		Long orderID = getinpuT();
-		LOGGER.info("Enter your customer ID: ");
-		Long itemID = Long.valueOf(getInput());
-		Order order = orderService.update(new Order(itemID, orderID));
-		return order;
-//		look up orderID in orders table
-//		
-	}
-	
+	}	
 	@Override
 	public Order update() {
 		LOGGER.info("Enter the ID of the order you wish to update: ");
@@ -70,19 +54,32 @@ public static final Logger LOGGER = Logger.getLogger(OrderController.class);
 		LOGGER.info("Order Successfully Updated");
 		return order;
 	}
-//		<!-------------ADD/DELETE item--------------!>		
-//		List<Order> odr= orderService.update();
-//		Order itemID;
-//		odr.add(itemID);
-//		odr.remove(itemID);		
-////		if order = new order, sysout "do enter Item ID you wish to add.
-////		else "order updated"
-////		else if sysout "enter item ID you wish to remove".
-////		sysout "order updated
-////		return order;
-////		
-
 	
+	public Order orderline() {
+		LOGGER.info("Enter your order ID: ");
+		Long orderID = getinpuT();
+		LOGGER.info("Enter Item ID: ");
+		Long itemID = Long.valueOf(getInput());
+		Order order = orderService.orderline(new Order(itemID, orderID));
+		return order;
+	}
+	
+//	<!-------------ADD/DELETE item--------------!>
+//	List<Order> listA = new ArrayList<>();
+//	
+//	listA.add(orderID);
+//	listA.add(orderID);
+//	listA.add(orderID);
+//----------------------------------------------------
+	
+//	List<Order> odr= orderService.create();
+//	Order itemID;
+//	odr.add(itemID);
+	
+//	odr.remove(itemID);
+//	-----------------------------------------------
+	
+
 	@Override
 	public void delete() {
 		LOGGER.info("Please Enter the OrderID you would like to delete: ");
