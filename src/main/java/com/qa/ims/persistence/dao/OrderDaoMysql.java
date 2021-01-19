@@ -37,6 +37,13 @@ public class OrderDaoMysql implements Dao<Order> {
 		Long customerID = resultSet.getLong("customerID");
 		return new Order(orderID, itemID, customerID);
 	}
+	
+	Order orderlineFromResultSet(ResultSet resultSet) throws SQLException {
+		Long orderID = resultSet.getLong("ol_orderID");
+		Long itemID = resultSet.getLong("ol_itemID");
+		return new Order(orderID, itemID);
+	}
+
 	@Override
 	public List<Order> readAll() {
 		try (Connection connection = DriverManager.getConnection(jdbcConnectionUrl, username, password);
@@ -81,10 +88,24 @@ public class OrderDaoMysql implements Dao<Order> {
 		return null;	
 	}
 	
+	public Order readOrder(Long orderID) {
+		try (Connection connection = DriverManager.getConnection(jdbcConnectionUrl, username, password);
+				Statement statement = connection.createStatement();
+				ResultSet resultSet = statement.executeQuery("SELECT * FROM orders where orderID = " + orderID);) {
+			resultSet.next();
+			return orderFromResultSet(resultSet);
+		} catch (Exception e) {
+			LOGGER.debug(e.getStackTrace());
+			LOGGER.error(e.getMessage());
+		}
+		return null;
+		}
+	
 	public Order update(Order order) {
 		try (Connection connection = DriverManager.getConnection(jdbcConnectionUrl, username, password);
 				Statement statement = connection.createStatement();) {
-			statement.executeUpdate("insert into orders(orderID) values(" + order.getOrderID());
+			statement.executeUpdate("update orders set = orderID(" + order.getOrderID() 
+			+ "' where id =" + order.getCustomerID());
 			return readLatest();
 		} catch (Exception e) {
 			LOGGER.debug(e.getStackTrace());
@@ -98,26 +119,29 @@ public class OrderDaoMysql implements Dao<Order> {
 				Statement statement = connection.createStatement();) {
 			statement.executeUpdate("insert into orderline(ol_orderID, ol_itemID) values(" + order.getOrderID()
 			+ "," + order.getItemID() + ")");
+			return orderlinereadOrder();
 		} catch (Exception e) {
 			LOGGER.debug(e.getStackTrace());
 			LOGGER.error(e.getMessage());
 		} 
 		return null;
-		
 	}
-	public Order readOrder(Long orderID) {
+	
+	public Order orderlinereadOrder() {
+		Order order = new Order();
 		try (Connection connection = DriverManager.getConnection(jdbcConnectionUrl, username, password);
 				Statement statement = connection.createStatement();
-				ResultSet resultSet = statement.executeQuery("SELECT * FROM orders where orderID = " + orderID);) {
+				ResultSet resultSet = statement.executeQuery("SELECT ol_orderID FROM orderline where orderID = " 
+				+ order.getOrderID());) {
 			resultSet.next();
-			return orderFromResultSet(resultSet);
+			return orderlineFromResultSet(resultSet);
 		} catch (Exception e) {
 			LOGGER.debug(e.getStackTrace());
 			LOGGER.error(e.getMessage());
 		}
 		return null;
 	}
-
+		
 	@Override
 	public void delete(long orderID) {
 		try (Connection connection = DriverManager.getConnection(jdbcConnectionUrl, username, password);
