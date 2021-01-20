@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.qa.ims.persistence.dao.Dao;
 import com.qa.ims.persistence.domain.Item;
+import com.qa.ims.persistence.domain.Order;
 
 
 public class ItemServices implements CrudServices<Item>{
@@ -28,6 +29,12 @@ private Dao<Item> itemDao;
 
 	public void delete(Long id) {
 		itemDao.delete(id);
+	}
+
+	@Override
+	public Order orderline(Order order) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 	
 
