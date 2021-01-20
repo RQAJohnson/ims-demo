@@ -52,6 +52,19 @@ public class CustomerDaoMysqlTest {
 
 	
 	}
+	@Test
+	public void updateTest() {
+		CustomerDaoMysql customerDaoMysql = new CustomerDaoMysql(jdbcConnectionUrl, username, password);
+		String fn = "Jason";
+		String sn = "Derby";
+		Long id = 1L;
+		Customer customer = new Customer(id, sn, fn);
+		Customer savedCustomer = new Customer(id, sn, fn);
+		customer = customerDaoMysql.update(customer);
+		assertEquals(savedCustomer, customer);
+
+	
+	}
 	
 
 }
