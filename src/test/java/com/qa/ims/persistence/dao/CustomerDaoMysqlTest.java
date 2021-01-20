@@ -26,7 +26,6 @@ public class CustomerDaoMysqlTest {
 	public static void init() {
 		Ims ims = new Ims();
 		ims.init(jdbcConnectionUrl, username, password, "src/test/resources/sql-schema.sql");
-	
 	}
 	
 	@Before
@@ -49,9 +48,8 @@ public class CustomerDaoMysqlTest {
 		Customer savedCustomer = new Customer(fn, sn);
 		customer = customerDaoMysql.create(customer);
 		assertEquals(savedCustomer, customer);
-
-	
 	}
+	
 	@Test
 	public void updateTest() {
 		CustomerDaoMysql customerDaoMysql = new CustomerDaoMysql(jdbcConnectionUrl, username, password);
@@ -62,10 +60,8 @@ public class CustomerDaoMysqlTest {
 		Customer savedCustomer = new Customer(id, sn, fn);
 		customer = customerDaoMysql.update(customer);
 		assertEquals(savedCustomer, customer);
-
-	
 	}
 	
-
+	
 }
 
