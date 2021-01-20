@@ -24,7 +24,7 @@ public class CustomerDaoMysql implements Dao<Customer> {
 	public CustomerDaoMysql(String username, String password) {
 		this.jdbcConnectionUrl = "jdbc:mysql://localhost:3306/ims";
 		this.username = username;
-		this.password = password;
+		this.password = password; 
 	}
 
 	public CustomerDaoMysql(String jdbcConnectionUrl, String username, String password) {
@@ -96,22 +96,22 @@ public class CustomerDaoMysql implements Dao<Customer> {
 		}
 		return null;
 	}
-
-	/**
-	 * Updates a customer in the database
-	 * 
-	 * @param customer - takes in a customer object, the id field will be used to
-	 *                 update that customer in the database
-	 * @return
-	 */
+//	 * @param customer - takes in a customer object, the id field will be used to
+//	 *                 update that customer in the database
+//	 * @return
+//	 
 	@Override
 	public Customer update(Customer customer) {
 		try (Connection connection = DriverManager.getConnection(jdbcConnectionUrl, username, password);
+				
 				Statement statement = connection.createStatement();) {
+			
 			statement.executeUpdate("update customers set first_name ='" + customer.getFirstName() + "', surname ='"
 					+ customer.getSurname() + "' where id =" + customer.getId());
 			return readCustomer(customer.getId());
-		} catch (Exception e) {
+			
+		} catch (Exception e)
+		{
 			LOGGER.debug(e.getStackTrace());
 			LOGGER.error(e.getMessage());
 		}
