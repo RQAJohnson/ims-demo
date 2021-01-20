@@ -2,6 +2,7 @@ package com.qa.ims.persistence.dao;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -97,19 +98,13 @@ public class CustomerDaoMysql implements Dao<Customer> {
 		return null;
 	}
 //	 * @param customer - takes in a customer object, the id field will be used to
-//	 *                 update that customer in the database
-//	 * @return
-//	 
-	@Override
-	public Customer update(Customer customer) {
+public Customer update2(Customer customer) {
 		try (Connection connection = DriverManager.getConnection(jdbcConnectionUrl, username, password);
-				
-				Statement statement = connection.createStatement();) {
-			
+			Statement statement = connection.createStatement();) {
 			statement.executeUpdate("update customers set first_name ='" + customer.getFirstName() + "', surname ='"
 					+ customer.getSurname() + "' where id =" + customer.getId());
-			return readCustomer(customer.getId());
 			
+			return readCustomer(customer.getId());
 		} catch (Exception e)
 		{
 			LOGGER.debug(e.getStackTrace());
@@ -117,6 +112,38 @@ public class CustomerDaoMysql implements Dao<Customer> {
 		}
 		return null;
 	}
+	
+	@Override
+	public Customer update(Customer customer) {
+		String sqlUpdate = "UPDATE customers "
+                + "SET first_name = ?, surname = ? "
+                + "WHERE id = ?";
+		try (Connection connection = DriverManager.getConnection(jdbcConnectionUrl, username, password);
+				PreparedStatement pstmt = connection.prepareStatement(sqlUpdate)) { 
+			
+            pstmt.setString(1, customer.getFirstName());
+            pstmt.setString(2, customer.getSurname());
+            pstmt.setLong(3, customer.getId());
+
+            int customerUpdated = pstmt.executeUpdate();
+            System.out.println(String.format("Customer updated", customerUpdated));
+            
+            pstmt.close();
+			
+		}
+		catch (Exception e) {
+			LOGGER.debug(e.getStackTrace());
+			LOGGER.error(e.getMessage());
+		}
+		return null;
+	}
+
+
+	
+	
+	
+	
+	
 
 	@Override
 	public void delete(long id) {
@@ -131,6 +158,18 @@ public class CustomerDaoMysql implements Dao<Customer> {
 
 	@Override
 	public Order orderline(Order order) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+//	@Override
+//	public Customer update(Customer t) {
+//		// TODO Auto-generated method stub
+//		return null;
+//	}
+
+	@Override
+	public Customer update2() {
 		// TODO Auto-generated method stub
 		return null;
 	}

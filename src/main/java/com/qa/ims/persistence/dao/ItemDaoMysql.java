@@ -8,6 +8,8 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 import org.apache.log4j.Logger;
+
+import com.qa.ims.persistence.domain.Customer;
 import com.qa.ims.persistence.domain.Item;
 import com.qa.ims.persistence.domain.Order;
 
@@ -122,6 +124,16 @@ public class ItemDaoMysql implements Dao<Item> {
 		}
 		@Override
 		public Order orderline(Order order) {
+			// TODO Auto-generated method stub
+			return null;
+		}
+		@Override
+		public Customer update2() {
+			// TODO Auto-generated method stub
+			return null;
+		}
+		@Override
+		public Customer update() {
 			// TODO Auto-generated method stub
 			return null;
 		}

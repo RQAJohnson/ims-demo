@@ -49,6 +49,19 @@ public class CustomerController implements CrudController<Customer>{
 	}
 
 	@Override
+	public Customer update2() {
+//		LOGGER.info("Please enter the id of the customer you would like to update");
+//		Long id = Long.valueOf(getInput());
+//		LOGGER.info("Please enter a first name");
+//		String firstName = getInput();
+//		LOGGER.info("Please enter a surname");
+//		String surname = getInput();
+//		Customer customer = customerService.update(new Customer(id, firstName, surname));
+//		LOGGER.info("Customer Updated");
+		return null;
+	}
+	
+	@Override
 	public Customer update() {
 		LOGGER.info("Please enter the id of the customer you would like to update");
 		Long id = Long.valueOf(getInput());
