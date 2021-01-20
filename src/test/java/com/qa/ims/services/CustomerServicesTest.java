@@ -12,7 +12,7 @@ import com.qa.ims.persistence.dao.Dao;
 import com.qa.ims.persistence.domain.Customer;
 
 @RunWith(MockitoJUnitRunner.class)
-public class CustomerServicesTest {
+public class CustomerServicesTest { 
 	
 	@Mock
 	private Dao<Customer> customerDao;
