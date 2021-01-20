@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 import org.apache.log4j.Logger;
 import com.qa.ims.persistence.domain.Item;
+import com.qa.ims.persistence.domain.Order;
 
 public class ItemDaoMysql implements Dao<Item> {
 	
@@ -140,6 +141,11 @@ public class ItemDaoMysql implements Dao<Item> {
 				LOGGER.error(e.getMessage());
 			}
 			System.out.println("Item Deleted");
+		}
+		@Override
+		public Order orderline(Order order) {
+			// TODO Auto-generated method stub
+			return null;
 		}
 		
 }

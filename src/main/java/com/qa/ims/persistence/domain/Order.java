@@ -5,6 +5,7 @@ public class Order {
 	private Long orderID;
 	private Long itemID;
 	private Long customerID;
+	
 		
 	public Order(Long orderID, Long customerID, Long itemID) {
 		this.orderID = orderID;

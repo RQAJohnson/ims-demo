@@ -5,6 +5,7 @@ import java.util.List;
 import org.apache.log4j.Logger;
 
 import com.qa.ims.persistence.domain.Customer;
+import com.qa.ims.persistence.domain.Order;
 import com.qa.ims.services.CrudServices;
 import com.qa.ims.utils.Utils;
 
@@ -78,5 +79,10 @@ public class CustomerController implements CrudController<Customer>{
 		Long id = Long.valueOf(getInput());
 		customerService.delete(id);
 	}
+
+
+
+
+	
 	
 }
