@@ -166,11 +166,7 @@ public class OrderDaoMysql implements Dao<Order> {
 		}
 		System.out.println("Order Deleted");
 	}
-	@Override
-	public Customer update2() {
-		// TODO Auto-generated method stub
-		return null;
-	}
+	
 	@Override
 	public Customer update() {
 		// TODO Auto-generated method stub

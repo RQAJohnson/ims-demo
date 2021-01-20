@@ -72,8 +72,9 @@ public static final Logger LOGGER = Logger.getLogger(ItemController.class);
 		itemService.delete(id);
 	}
 
+
 	@Override
-	public Customer update2() {
+	public Customer customerUpdate() {
 		// TODO Auto-generated method stub
 		return null;
 	}

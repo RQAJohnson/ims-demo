@@ -86,8 +86,9 @@ public static final Logger LOGGER = Logger.getLogger(OrderController.class);
 		
 	}
 
+
 	@Override
-	public Customer update2() {
+	public Customer customerUpdate() {
 		// TODO Auto-generated method stub
 		return null;
 	}

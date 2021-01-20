@@ -97,21 +97,6 @@ public class CustomerDaoMysql implements Dao<Customer> {
 		}
 		return null;
 	}
-//	 * @param customer - takes in a customer object, the id field will be used to
-public Customer update2(Customer customer) {
-		try (Connection connection = DriverManager.getConnection(jdbcConnectionUrl, username, password);
-			Statement statement = connection.createStatement();) {
-			statement.executeUpdate("update customers set first_name ='" + customer.getFirstName() + "', surname ='"
-					+ customer.getSurname() + "' where id =" + customer.getId());
-			
-			return readCustomer(customer.getId());
-		} catch (Exception e)
-		{
-			LOGGER.debug(e.getStackTrace());
-			LOGGER.error(e.getMessage());
-		}
-		return null;
-	}
 	
 	@Override
 	public Customer update(Customer customer) {
@@ -126,7 +111,7 @@ public Customer update2(Customer customer) {
             pstmt.setLong(3, customer.getId());
 
             int customerUpdated = pstmt.executeUpdate();
-            System.out.println(String.format("Customer updated", customerUpdated));
+            System.out.println(String.format("Customer updated!", customerUpdated));
             
             pstmt.close();
 			
@@ -138,12 +123,6 @@ public Customer update2(Customer customer) {
 		return null;
 	}
 
-
-	
-	
-	
-	
-	
 
 	@Override
 	public void delete(long id) {
@@ -162,14 +141,8 @@ public Customer update2(Customer customer) {
 		return null;
 	}
 
-//	@Override
-//	public Customer update(Customer t) {
-//		// TODO Auto-generated method stub
-//		return null;
-//	}
-
 	@Override
-	public Customer update2() {
+	public Customer update() {
 		// TODO Auto-generated method stub
 		return null;
 	}

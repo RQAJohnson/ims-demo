@@ -14,12 +14,14 @@ public interface CrudController<T> {
     List<T> readAll();
      
     T create();
-     
+    
     T update();
-         
+          
     void delete();
+    
+    Customer customerUpdate();
 
-	Customer update2();
+	
 
 
 }

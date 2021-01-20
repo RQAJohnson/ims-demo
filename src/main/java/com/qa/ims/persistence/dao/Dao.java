@@ -17,8 +17,6 @@ public interface Dao<T> {
     
     public Order orderline(Order order);
 
-	Customer update2();
-
 	Customer update();
     
 
