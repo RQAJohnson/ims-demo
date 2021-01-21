@@ -65,18 +65,6 @@ public static final Logger LOGGER = Logger.getLogger(ItemController.class);
 		return item;
 	}
 	
-//	@Override
-//	public Item update() {
-//		LOGGER.info("Please enter the id of the customer you would like to update");
-//		Long id = Long.valueOf(getInput());
-//		LOGGER.info("Please enter a first name");
-//		String firstName = getInput();
-//		LOGGER.info("Please enter a surname");
-//		String surname = getInput();
-//		Customer customer = customerService.update(new Customer(id, firstName, surname));
-//		return customer;
-//	}
-
 	@Override
 	public void delete() {
 		LOGGER.info("Please enter the id of the item you wish to delete");
