@@ -1,7 +1,8 @@
 Coverage: 34%
-# Project Title
+# Project Title: Inventory Management System
 
-One Paragraph of project description goes here
+One Paragraph of project description goes here >
+Project Description: A management system which tracks items, customers and orders. Allowing users to manager their inventory with ease.
 
 ## Getting Started
 
@@ -12,7 +13,11 @@ These instructions will get you a copy of the project up and running on your loc
 What things you need to install the software and how to install them
 
 ```
-Give examples
+Eclipse for Java: https://www.eclipse.org/downloads/
+Java SE: https://www.oracle.com/java/technologies/javase/jdk14-archive-downloads.html
+Maven (as a build tool for Java): https://maven.apache.org/download.cgi
+Mysql Workbench: https://dev.mysql.com/downloads/workbench/
+Git: https://git-scm.com/
 ```
 
 ### Installing
