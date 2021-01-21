@@ -100,41 +100,28 @@ public class ItemDaoMysql implements Dao<Item> {
 
 		@Override
 		public Item update(Item item) {
+			String sqlUpdate = "UPDATE items "
+	                + "SET title = ?, price = ? "
+	                + "WHERE itemID = ?";
 			try (Connection connection = DriverManager.getConnection(jdbcConnectionUrl, username, password);
-					Statement statement = connection.createStatement();) {
-				statement.executeUpdate("update items set title ='" + item.getTitle() + "', price ='"
-						+ item.getPrice() + "' where id =" + item.getId());
-				return readItem(item.getId());
-			} catch (Exception e) {
+					PreparedStatement pstmt = connection.prepareStatement(sqlUpdate)) { 
+				
+	            pstmt.setString(1, item.getTitle());
+	            pstmt.setDouble(2, item.getPrice());
+	            pstmt.setLong(3, item.getId());
+
+	            int itemUpdated = pstmt.executeUpdate();
+	            System.out.println(String.format("Item Updated!", itemUpdated));
+	            
+	            pstmt.close();
+				
+			}
+			catch (Exception e) {
 				LOGGER.debug(e.getStackTrace());
 				LOGGER.error(e.getMessage());
-			} 
+			}
 			return null;
 		}
-//		@Override
-//		public Item update(Item item) {
-//			String sqlUpdate = "UPDATE items "
-//	                + "SET title = ?, price = ? "
-//	                + "WHERE itemID = ?";
-//			try (Connection connection = DriverManager.getConnection(jdbcConnectionUrl, username, password);
-//					PreparedStatement pstmt = connection.prepareStatement(sqlUpdate)) { 
-//				
-//	            pstmt.setString(1, item.getTitle());
-//	            pstmt.setString(2, item.getPrice());
-//	            pstmt.setLong(3, item.getItemID());
-//
-//	            int itemUpdated = pstmt.executeUpdate();
-//	            System.out.println(String.format("Item Updated!", itemUpdated));
-//	            
-//	            pstmt.close();
-//				
-//			}
-//			catch (Exception e) {
-//				LOGGER.debug(e.getStackTrace());
-//				LOGGER.error(e.getMessage());
-//			}
-//			return null;
-//		}
 
 		@Override
 		public void delete(long id) {

@@ -56,7 +56,7 @@ public static final Logger LOGGER = Logger.getLogger(ItemController.class);
 	public Item update() {
 		LOGGER.info("Please enter the ID of the item you want to update");
 		Long itemID = Long.valueOf(getinpuT());
-		LOGGER.info("Please enter a Title");
+		LOGGER.info("Please enter the title of your new Item: ");
 		String title = getInput();
 		LOGGER.info("Please enter a Price");
 		Double price = getinput();
@@ -66,7 +66,7 @@ public static final Logger LOGGER = Logger.getLogger(ItemController.class);
 	}
 	
 //	@Override
-//	public Customer update() {
+//	public Item update() {
 //		LOGGER.info("Please enter the id of the customer you would like to update");
 //		Long id = Long.valueOf(getInput());
 //		LOGGER.info("Please enter a first name");
