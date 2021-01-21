@@ -2,6 +2,7 @@ package com.qa.ims.persistence.dao;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -18,13 +19,13 @@ public class CustomerDaoMysql implements Dao<Customer> {
 	public static final Logger LOGGER = Logger.getLogger(CustomerDaoMysql.class);
 
 	private String jdbcConnectionUrl;
-	private String username;
+	private String username; 
 	private String password;
 
 	public CustomerDaoMysql(String username, String password) {
 		this.jdbcConnectionUrl = "jdbc:mysql://localhost:3306/ims";
 		this.username = username;
-		this.password = password;
+		this.password = password; 
 	}
 
 	public CustomerDaoMysql(String jdbcConnectionUrl, String username, String password) {
@@ -36,15 +37,10 @@ public class CustomerDaoMysql implements Dao<Customer> {
 	Customer customerFromResultSet(ResultSet resultSet) throws SQLException {
 		Long id = resultSet.getLong("id");
 		String firstName = resultSet.getString("first_name");
-		String surname = resultSet.getString("surname");
-		return new Customer(id, firstName, surname);
+		String surName = resultSet.getString("surname");
+		return new Customer(id, firstName, surName);
 	}
 
-	/**
-	 * Reads all customers from the database
-	 * 
-	 * @return A list of customers
-	 */
 	@Override
 	public List<Customer> readAll() {
 		try (Connection connection = DriverManager.getConnection(jdbcConnectionUrl, username, password);
@@ -75,11 +71,6 @@ public class CustomerDaoMysql implements Dao<Customer> {
 		return null;
 	}
 
-	/**
-	 * Creates a customer in the database
-	 * 
-	 * @param customer - takes in a customer object. id will be ignored
-	 */
 	@Override
 	public Customer create(Customer customer) {
 		try (Connection connection = DriverManager.getConnection(jdbcConnectionUrl, username, password);
@@ -97,7 +88,7 @@ public class CustomerDaoMysql implements Dao<Customer> {
 	public Customer readCustomer(Long id) {
 		try (Connection connection = DriverManager.getConnection(jdbcConnectionUrl, username, password);
 				Statement statement = connection.createStatement();
-				ResultSet resultSet = statement.executeQuery("SELECT FROM customers where id = " + id);) {
+				ResultSet resultSet = statement.executeQuery("SELECT * FROM customers where id = " + id);) {
 			resultSet.next();
 			return customerFromResultSet(resultSet);
 		} catch (Exception e) {
@@ -106,33 +97,33 @@ public class CustomerDaoMysql implements Dao<Customer> {
 		}
 		return null;
 	}
-
-	/**
-	 * Updates a customer in the database
-	 * 
-	 * @param customer - takes in a customer object, the id field will be used to
-	 *                 update that customer in the database
-	 * @return
-	 */
+	
 	@Override
 	public Customer update(Customer customer) {
+		String sqlUpdate = "UPDATE customers "
+                + "SET first_name = ?, surname = ? "
+                + "WHERE id = ?";
 		try (Connection connection = DriverManager.getConnection(jdbcConnectionUrl, username, password);
-				Statement statement = connection.createStatement();) {
-			statement.executeUpdate("update customers set first_name ='" + customer.getFirstName() + "', surname ='"
-					+ customer.getSurname() + "' where id =" + customer.getId());
-			return readCustomer(customer.getId());
-		} catch (Exception e) {
+				PreparedStatement pstmt = connection.prepareStatement(sqlUpdate)) { 
+			
+            pstmt.setString(1, customer.getFirstName());
+            pstmt.setString(2, customer.getSurname());
+            pstmt.setLong(3, customer.getId());
+
+            int customerUpdated = pstmt.executeUpdate();
+            System.out.println(String.format("Customer updated!", customerUpdated));
+            
+            pstmt.close();
+			
+		}
+		catch (Exception e) {
 			LOGGER.debug(e.getStackTrace());
 			LOGGER.error(e.getMessage());
 		}
 		return null;
 	}
 
-	/**
-	 * Deletes a customer in the database
-	 * 
-	 * @param id - id of the customer
-	 */
+
 	@Override
 	public void delete(long id) {
 		try (Connection connection = DriverManager.getConnection(jdbcConnectionUrl, username, password);
@@ -146,6 +137,12 @@ public class CustomerDaoMysql implements Dao<Customer> {
 
 	@Override
 	public Order orderline(Order order) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Customer update() {
 		// TODO Auto-generated method stub
 		return null;
 	}

@@ -11,7 +11,7 @@ import java.util.List;
 
 import org.apache.log4j.Logger;
 
-
+import com.qa.ims.persistence.domain.Customer;
 import com.qa.ims.persistence.domain.Order;
 
 public class OrderDaoMysql implements Dao<Order> {
@@ -165,6 +165,12 @@ public class OrderDaoMysql implements Dao<Order> {
 			LOGGER.error(e.getMessage());
 		}
 		System.out.println("Order Deleted");
+	}
+	
+	@Override
+	public Customer update() {
+		// TODO Auto-generated method stub
+		return null;
 	}	
 
 }

@@ -3,6 +3,7 @@ package com.qa.ims.controller;
 import java.util.List; 
 import org.apache.log4j.Logger;
 
+import com.qa.ims.persistence.domain.Customer;
 import com.qa.ims.persistence.domain.Order;
 import com.qa.ims.services.CrudServices;
 import com.qa.ims.utils.Utils;
@@ -83,6 +84,13 @@ public static final Logger LOGGER = Logger.getLogger(OrderController.class);
 		Long orderID = getinpuT();
 		orderService.delete(orderID);
 		
+	}
+
+
+	@Override
+	public Customer customerUpdate() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 	
 }
