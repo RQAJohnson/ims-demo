@@ -11,18 +11,18 @@ These instructions will get you a copy of the project up and running on your loc
 
 Technologies you need to download.
 
-```
+
 Eclipse: https://www.eclipse.org/downloads/
 Java SE: https://www.oracle.com/java/technologies/javase/jdk14-archive-downloads.html
 Maven: : https://maven.apache.org/download.cgi
 Mysql Workbench: https://dev.mysql.com/downloads/workbench/
 Git: https://git-scm.com/
-```
+
 
 ### Installing
 
 * To **COMPLETE** the installation process follow the links below, some contain visual aids.
-```
+
 
 Eclipse: https://www.tutorialspoint.com/eclipse/eclipse_installation.htm``` When eclipse starts up for the first time it prompts you for the location of the workspace folder. 
 All your data will be stored in the workspace folder. You can accept the default or choose a new location.
@@ -36,9 +36,9 @@ Mysql Workbench:https://www.guru99.com/introduction-to-mysql-workbench.html```
 Git: https://phoenixnap.com/kb/how-to-install-git-windows``` Once the installation is complete, tick the boxes to view the Release Notes or Launch Git Bash, 
 then click Finish. For further instructions.
 
-```
 
-```
+
+
 
 ## Running the tests
 
@@ -53,7 +53,7 @@ To run the test ensure that you have the right maven dependencies,
  
 The proceed to **SELECT** the test class. **RIGHT CLICK** and there should be a promt **run as** and select Junit Test.
 Running this test helps to detect and protect bugs inn the furture.
-``` 
+
 
 ### Integration Tests 
 Intergration testing, tests whether each individual module operate together.
@@ -62,7 +62,7 @@ To run the test create a dummy function copying the input values and what you ex
 This is because we might have created unit tests for each class but we have not proven that they can communicate together.
 
 The idea is to prove that each 'integration' of the application is functioning as expected.
-```
+
 
 
 ## Deployment
@@ -72,7 +72,7 @@ In order to deploy this application onto a live site (GCP) you want to replace t
 EXAMPLE (Numbers given are example)
 
 jdbc:mysql://localhost:3306/ims **>** jdbc:mysql://56.21.44.447:3306/ims
-```
+
 
 
 ## Built With
