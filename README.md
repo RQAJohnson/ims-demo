@@ -1,7 +1,6 @@
 Coverage: 34%
 # Project Title: Inventory Management System
 
-One Paragraph of project description goes here >
 Project Description: A management system which tracks items, customers and orders. Allowing users to manager their inventory with ease.
 
 ## Getting Started
@@ -20,7 +19,7 @@ Mysql Workbench: https://dev.mysql.com/downloads/workbench/
 Git: https://git-scm.com/
 ```
 
-### Installing
+### Installing > To follow instructions from the links given above within the prerequisites
 
 A step by step series of examples that tell you how to get a development env running
 
@@ -65,7 +64,7 @@ Explain what these tests test and why
 Give an example
 ```
 
-## Deployment
+## Deployment > GCP
 
 Add additional notes about how to deploy this on a live system
 
