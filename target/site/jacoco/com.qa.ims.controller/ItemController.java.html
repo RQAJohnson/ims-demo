@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>ItemController.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">chris-ims</a> &gt; <a href="index.source.html" class="el_package">com.qa.ims.controller</a> &gt; <span class="el_source">ItemController.java</span></div><h1>ItemController.java</h1><pre class="source lang-java linenums">package com.qa.ims.controller;
+
+import java.util.List;   
+import org.apache.log4j.Logger;
+
+import com.qa.ims.persistence.domain.Customer;
+import com.qa.ims.persistence.domain.Item;
+import com.qa.ims.services.CrudServices;
+import com.qa.ims.utils.Utils;
+
+public class ItemController implements CrudController&lt;Item&gt; {
+	
+<span class="fc" id="L13">public static final Logger LOGGER = Logger.getLogger(ItemController.class);</span>
+	
+	private CrudServices&lt;Item&gt; itemService;
+	
+	
+<span class="fc" id="L18">	public ItemController(CrudServices&lt;Item&gt; itemService) {</span>
+<span class="fc" id="L19">		this.itemService = itemService;</span>
+<span class="fc" id="L20">	} </span>
+ 
+	String getInput() { 
+<span class="nc" id="L23">		return Utils.getInput(); </span>
+	}
+	
+	Double getinput() {
+<span class="nc" id="L27">		return Utils.getinput();</span>
+	}
+		
+	Long getinpuT() {
+<span class="nc" id="L31">		return Utils.getinpuT();</span>
+	}
+	
+
+	@Override
+	public List&lt;Item&gt; readAll() {
+<span class="fc" id="L37">		List&lt;Item&gt; item = itemService.readAll();</span>
+<span class="fc bfc" id="L38" title="All 2 branches covered.">		for(Item items: item) {</span>
+<span class="fc" id="L39">			LOGGER.info(items.toString());</span>
+<span class="fc" id="L40">		}</span>
+<span class="fc" id="L41">		return item;</span>
+	}
+
+	@Override
+	public Item create() {
+<span class="fc" id="L46">		LOGGER.info(&quot;Please Enter a Title of game&quot;);</span>
+<span class="fc" id="L47">		String title = getInput();</span>
+<span class="fc" id="L48">		LOGGER.info(&quot;Please enter a Price&quot;);</span>
+<span class="fc" id="L49">		Double price = getinput();</span>
+<span class="fc" id="L50">		Item item = itemService.create(new Item(title, price));</span>
+<span class="fc" id="L51">		LOGGER.info(&quot;Item Added&quot;);</span>
+<span class="fc" id="L52">		return item;</span>
+}
+
+	@Override
+	public Item update() {
+<span class="fc" id="L57">		LOGGER.info(&quot;Please enter the ID of the item you want to update&quot;);</span>
+<span class="fc" id="L58">		Long itemID = Long.valueOf(getinpuT());</span>
+<span class="fc" id="L59">		LOGGER.info(&quot;Please enter the title of your new Item: &quot;);</span>
+<span class="fc" id="L60">		String title = getInput();</span>
+<span class="fc" id="L61">		LOGGER.info(&quot;Please enter a Price&quot;);</span>
+<span class="fc" id="L62">		Double price = getinput();</span>
+<span class="fc" id="L63">		Item item = itemService.update(new Item(itemID, title, price));</span>
+<span class="fc" id="L64">		LOGGER.info(&quot;Item Updated&quot;);</span>
+<span class="fc" id="L65">		return item;</span>
+	}
+	
+	@Override
+	public void delete() {
+<span class="fc" id="L70">		LOGGER.info(&quot;Please enter the id of the item you wish to delete&quot;);</span>
+<span class="fc" id="L71">		Long id = Long.valueOf(getinpuT());</span>
+<span class="fc" id="L72">		itemService.delete(id);</span>
+<span class="fc" id="L73">	}</span>
+
+
+	@Override
+	public Customer customerUpdate() {
+		// TODO Auto-generated method stub
+<span class="nc" id="L79">		return null;</span>
+	}
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.5.201910111838</span></div></body></html>

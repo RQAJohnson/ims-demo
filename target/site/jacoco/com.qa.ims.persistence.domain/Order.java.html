@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Order.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">chris-ims</a> &gt; <a href="index.source.html" class="el_package">com.qa.ims.persistence.domain</a> &gt; <span class="el_source">Order.java</span></div><h1>Order.java</h1><pre class="source lang-java linenums">package com.qa.ims.persistence.domain;
+
+public class Order {
+	
+	private Long orderID;
+	private Long itemID;
+	private Long customerID;
+	
+		
+<span class="nc" id="L10">	public Order(Long orderID, Long customerID, Long itemID) {</span>
+<span class="nc" id="L11">		this.orderID = orderID;</span>
+<span class="nc" id="L12">		this.itemID = itemID;</span>
+<span class="nc" id="L13">		this.customerID = customerID;</span>
+<span class="nc" id="L14">	}</span>
+	
+
+<span class="nc" id="L17">	public Order(Long customerID, Long orderID) {</span>
+<span class="nc" id="L18">		this.orderID = orderID;</span>
+<span class="nc" id="L19">		this.customerID = customerID;</span>
+<span class="nc" id="L20">	}</span>
+<span class="nc" id="L21">	public Order(Long customerID) {</span>
+<span class="nc" id="L22">		this.customerID = customerID;</span>
+<span class="nc" id="L23">	}</span>
+
+
+<span class="nc" id="L26">	public Order() {</span>
+<span class="nc" id="L27">	}</span>
+
+
+	public Long getOrderID() {
+<span class="nc" id="L31">		return orderID;</span>
+	}
+
+	public void setOrderID(Long orderID) {
+<span class="nc" id="L35">		this.orderID = orderID;</span>
+<span class="nc" id="L36">	}</span>
+
+	public Long getItemID() {
+<span class="nc" id="L39">		return itemID;</span>
+	}
+
+	public void setItemID(Long itemID) {
+<span class="nc" id="L43">		this.itemID = itemID;</span>
+<span class="nc" id="L44">	}</span>
+
+	public Long getCustomerID() {
+<span class="nc" id="L47">		return customerID;</span>
+	}
+
+	public void setCustomerID(Long customerID) {
+<span class="nc" id="L51">		this.customerID = customerID;</span>
+<span class="nc" id="L52">	}</span>
+
+	@Override
+	public int hashCode() {
+<span class="nc" id="L56">		final int prime = 31;</span>
+<span class="nc" id="L57">		int result = 1;</span>
+<span class="nc bnc" id="L58" title="All 2 branches missed.">		result = prime * result + ((itemID == null) ? 0 : itemID.hashCode());</span>
+<span class="nc bnc" id="L59" title="All 2 branches missed.">		result = prime * result + ((customerID == null) ? 0 : customerID.hashCode());</span>
+<span class="nc bnc" id="L60" title="All 2 branches missed.">		result = prime * result + ((orderID == null) ? 0 : orderID.hashCode());</span>
+<span class="nc" id="L61">		return result;</span>
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+<span class="nc bnc" id="L66" title="All 2 branches missed.">		if (this == obj)</span>
+<span class="nc" id="L67">			return true;</span>
+<span class="nc bnc" id="L68" title="All 2 branches missed.">		if (obj == null)</span>
+<span class="nc" id="L69">			return false;</span>
+<span class="nc bnc" id="L70" title="All 2 branches missed.">		if (getClass() != obj.getClass())</span>
+<span class="nc" id="L71">			return false;</span>
+<span class="nc" id="L72">		Order other = (Order) obj;</span>
+<span class="nc bnc" id="L73" title="All 2 branches missed.">		if (itemID == null) {</span>
+<span class="nc bnc" id="L74" title="All 2 branches missed.">			if (other.itemID != null)</span>
+<span class="nc" id="L75">				return false;</span>
+<span class="nc bnc" id="L76" title="All 2 branches missed.">		} else if (!itemID.equals(other.itemID))</span>
+<span class="nc" id="L77">			return false;</span>
+<span class="nc bnc" id="L78" title="All 2 branches missed.">		if (customerID == null) {</span>
+<span class="nc bnc" id="L79" title="All 2 branches missed.">			if (other.customerID != null)</span>
+<span class="nc" id="L80">				return false;</span>
+<span class="nc bnc" id="L81" title="All 2 branches missed.">		} else if (!customerID.equals(other.customerID))</span>
+<span class="nc" id="L82">			return false;</span>
+<span class="nc bnc" id="L83" title="All 2 branches missed.">		if (orderID == null) {</span>
+<span class="nc bnc" id="L84" title="All 2 branches missed.">			if (other.orderID != null)</span>
+<span class="nc" id="L85">				return false;</span>
+<span class="nc bnc" id="L86" title="All 2 branches missed.">		} else if (!orderID.equals(other.orderID))</span>
+<span class="nc" id="L87">			return false;</span>
+<span class="nc" id="L88">		return true;</span>
+	}
+	
+}
+	
+
+
+
+
+ 
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.5.201910111838</span></div></body></html>
