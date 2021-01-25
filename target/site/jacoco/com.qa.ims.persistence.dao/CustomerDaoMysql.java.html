@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>CustomerDaoMysql.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">chris-ims</a> &gt; <a href="index.source.html" class="el_package">com.qa.ims.persistence.dao</a> &gt; <span class="el_source">CustomerDaoMysql.java</span></div><h1>CustomerDaoMysql.java</h1><pre class="source lang-java linenums">package com.qa.ims.persistence.dao;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
+
+import org.apache.log4j.Logger;
+
+import com.qa.ims.persistence.domain.Customer;
+import com.qa.ims.persistence.domain.Order;
+
+public class CustomerDaoMysql implements Dao&lt;Customer&gt; {
+
+<span class="fc" id="L19">	public static final Logger LOGGER = Logger.getLogger(CustomerDaoMysql.class);</span>
+
+	private String jdbcConnectionUrl;
+	private String username; 
+	private String password;
+
+<span class="nc" id="L25">	public CustomerDaoMysql(String username, String password) {</span>
+<span class="nc" id="L26">		this.jdbcConnectionUrl = &quot;jdbc:mysql://localhost:3306/ims&quot;;</span>
+<span class="nc" id="L27">		this.username = username;</span>
+<span class="nc" id="L28">		this.password = password; </span>
+<span class="nc" id="L29">	}</span>
+
+<span class="fc" id="L31">	public CustomerDaoMysql(String jdbcConnectionUrl, String username, String password) {</span>
+<span class="fc" id="L32">		this.jdbcConnectionUrl = jdbcConnectionUrl;</span>
+<span class="fc" id="L33">		this.username = username;</span>
+<span class="fc" id="L34">		this.password = password;</span>
+<span class="fc" id="L35">	}</span>
+
+	Customer customerFromResultSet(ResultSet resultSet) throws SQLException {
+<span class="fc" id="L38">		Long id = resultSet.getLong(&quot;id&quot;);</span>
+<span class="fc" id="L39">		String firstName = resultSet.getString(&quot;first_name&quot;);</span>
+<span class="fc" id="L40">		String surName = resultSet.getString(&quot;surname&quot;);</span>
+<span class="fc" id="L41">		return new Customer(id, firstName, surName);</span>
+	}
+
+	@Override
+	public List&lt;Customer&gt; readAll() {
+<span class="nc" id="L46">		try (Connection connection = DriverManager.getConnection(jdbcConnectionUrl, username, password);</span>
+<span class="nc" id="L47">				Statement statement = connection.createStatement();</span>
+<span class="nc" id="L48">				ResultSet resultSet = statement.executeQuery(&quot;select * from customers&quot;);) {</span>
+<span class="nc" id="L49">			ArrayList&lt;Customer&gt; customers = new ArrayList&lt;&gt;();</span>
+<span class="nc bnc" id="L50" title="All 2 branches missed.">			while (resultSet.next()) {</span>
+<span class="nc" id="L51">				customers.add(customerFromResultSet(resultSet));</span>
+			}
+<span class="nc" id="L53">			return customers;</span>
+<span class="nc" id="L54">		} catch (SQLException e) {</span>
+<span class="nc" id="L55">			LOGGER.debug(e.getStackTrace());</span>
+<span class="nc" id="L56">			LOGGER.error(e.getMessage());</span>
+		}
+<span class="nc" id="L58">		return new ArrayList&lt;&gt;();</span>
+	}
+
+	public Customer readLatest() {
+<span class="fc" id="L62">		try (Connection connection = DriverManager.getConnection(jdbcConnectionUrl, username, password);</span>
+<span class="fc" id="L63">				Statement statement = connection.createStatement();</span>
+<span class="fc" id="L64">				ResultSet resultSet = statement.executeQuery(&quot;SELECT * FROM customers ORDER BY id DESC LIMIT 1&quot;);) {</span>
+<span class="fc" id="L65">			resultSet.next();</span>
+<span class="fc" id="L66">			return customerFromResultSet(resultSet);</span>
+<span class="nc" id="L67">		} catch (Exception e) {</span>
+<span class="nc" id="L68">			LOGGER.debug(e.getStackTrace());</span>
+<span class="nc" id="L69">			LOGGER.error(e.getMessage());</span>
+		}
+<span class="nc" id="L71">		return null;</span>
+	}
+
+	@Override
+	public Customer create(Customer customer) {
+<span class="fc" id="L76">		try (Connection connection = DriverManager.getConnection(jdbcConnectionUrl, username, password);</span>
+<span class="fc" id="L77">				Statement statement = connection.createStatement();) {</span>
+<span class="fc" id="L78">			statement.executeUpdate(&quot;insert into customers(first_name, surname) values('&quot; + customer.getFirstName()</span>
+<span class="fc" id="L79">					+ &quot;','&quot; + customer.getSurname() + &quot;')&quot;);</span>
+<span class="fc" id="L80">			return readLatest();</span>
+<span class="nc" id="L81">		} catch (Exception e) {</span>
+<span class="nc" id="L82">			LOGGER.debug(e.getStackTrace());</span>
+<span class="nc" id="L83">			LOGGER.error(e.getMessage());</span>
+		}
+<span class="nc" id="L85">		return null;</span>
+	}
+
+	public Customer readCustomer(Long id) {
+<span class="nc" id="L89">		try (Connection connection = DriverManager.getConnection(jdbcConnectionUrl, username, password);</span>
+<span class="nc" id="L90">				Statement statement = connection.createStatement();</span>
+<span class="nc" id="L91">				ResultSet resultSet = statement.executeQuery(&quot;SELECT * FROM customers where id = &quot; + id);) {</span>
+<span class="nc" id="L92">			resultSet.next();</span>
+<span class="nc" id="L93">			return customerFromResultSet(resultSet);</span>
+<span class="nc" id="L94">		} catch (Exception e) {</span>
+<span class="nc" id="L95">			LOGGER.debug(e.getStackTrace());</span>
+<span class="nc" id="L96">			LOGGER.error(e.getMessage());</span>
+		}
+<span class="nc" id="L98">		return null;</span>
+	}
+	
+	@Override
+	public Customer update(Customer customer) {
+<span class="nc" id="L103">		String sqlUpdate = &quot;UPDATE customers &quot;</span>
+                + &quot;SET first_name = ?, surname = ? &quot;
+                + &quot;WHERE id = ?&quot;;
+<span class="nc" id="L106">		try (Connection connection = DriverManager.getConnection(jdbcConnectionUrl, username, password);</span>
+<span class="nc" id="L107">				PreparedStatement pstmt = connection.prepareStatement(sqlUpdate)) { </span>
+			
+<span class="nc" id="L109">            pstmt.setString(1, customer.getFirstName());</span>
+<span class="nc" id="L110">            pstmt.setString(2, customer.getSurname());</span>
+<span class="nc" id="L111">            pstmt.setLong(3, customer.getId());</span>
+
+<span class="nc" id="L113">            int customerUpdated = pstmt.executeUpdate();</span>
+<span class="nc" id="L114">            System.out.println(String.format(&quot;Customer updated!&quot;, customerUpdated));</span>
+            
+<span class="nc" id="L116">            pstmt.close();</span>
+			
+		}
+<span class="nc" id="L119">		catch (Exception e) {</span>
+<span class="nc" id="L120">			LOGGER.debug(e.getStackTrace());</span>
+<span class="nc" id="L121">			LOGGER.error(e.getMessage());</span>
+<span class="nc" id="L122">		}</span>
+<span class="nc" id="L123">		return null;</span>
+	}
+
+
+	@Override
+	public void delete(long id) {
+<span class="nc" id="L129">		try (Connection connection = DriverManager.getConnection(jdbcConnectionUrl, username, password);</span>
+<span class="nc" id="L130">				Statement statement = connection.createStatement();) {</span>
+<span class="nc" id="L131">			statement.executeUpdate(&quot;delete from customers where id = &quot; + id);</span>
+<span class="nc" id="L132">		} catch (Exception e) {</span>
+<span class="nc" id="L133">			LOGGER.debug(e.getStackTrace());</span>
+<span class="nc" id="L134">			LOGGER.error(e.getMessage());</span>
+<span class="nc" id="L135">		}</span>
+<span class="nc" id="L136">	}</span>
+
+	@Override
+	public Order orderline(Order order) {
+		// TODO Auto-generated method stub
+<span class="nc" id="L141">		return null;</span>
+	}
+
+	@Override
+	public Customer update() {
+		// TODO Auto-generated method stub
+<span class="nc" id="L147">		return null;</span>
+	}
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.5.201910111838</span></div></body></html>

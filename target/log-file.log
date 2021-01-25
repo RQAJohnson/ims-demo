@@ -1,0 +1,157 @@
+2021-01-21 21:45:34 INFO  Ims:32 - What is your username
+2021-01-21 21:45:39 INFO  Ims:34 - What is your password
+2021-01-21 21:45:42 DEBUG Ims:138 - java.base/java.io.FileInputStream.open0(Native Method)
+2021-01-21 21:45:42 DEBUG Ims:138 - java.base/java.io.FileInputStream.open(FileInputStream.java:212)
+2021-01-21 21:45:42 DEBUG Ims:138 - java.base/java.io.FileInputStream.<init>(FileInputStream.java:154)
+2021-01-21 21:45:42 DEBUG Ims:138 - java.base/java.io.FileInputStream.<init>(FileInputStream.java:109)
+2021-01-21 21:45:42 DEBUG Ims:138 - java.base/java.io.FileReader.<init>(FileReader.java:60)
+2021-01-21 21:45:42 DEBUG Ims:138 - com.qa.ims.Ims.init(Ims.java:129)
+2021-01-21 21:45:42 DEBUG Ims:138 - com.qa.ims.Ims.init(Ims.java:104)
+2021-01-21 21:45:42 DEBUG Ims:138 - com.qa.ims.Ims.imsSystem(Ims.java:37)
+2021-01-21 21:45:42 DEBUG Ims:138 - com.qa.ims.Runner.main(Runner.java:11)
+2021-01-21 21:45:42 ERROR Ims:140 - src\main\resources\sql-schema.sql (The system cannot find the path specified)
+2021-01-21 21:45:42 INFO  Ims:39 - Which entity would you like to use?
+2021-01-21 21:45:42 INFO  Domain:28 - CUSTOMER: Information about customers
+2021-01-21 21:45:42 INFO  Domain:28 - ITEM: Individual Items
+2021-01-21 21:45:42 INFO  Domain:28 - ORDER: Purchases of items
+2021-01-21 21:45:42 INFO  Domain:28 - STOP: To close the application
+2021-01-21 21:46:07 INFO  Ims:43 - What would you like to do with customer:
+2021-01-21 21:46:07 INFO  Action:40 - CREATE: To save a new item into the database
+2021-01-21 21:46:07 INFO  Action:40 - READ: To read an item from the database
+2021-01-21 21:46:07 INFO  Action:40 - UPDATE: To change an item already in the database
+2021-01-21 21:46:07 INFO  Action:40 - DELETE: To remove an item from the database
+2021-01-21 21:46:07 INFO  Action:40 - RETURN: To return to domain selection
+2021-01-21 21:46:10 INFO  CustomerController:35 - id:1 first name:Sarah surname:smith
+2021-01-21 21:46:10 INFO  CustomerController:35 - id:2 first name:beyonce surname:knowles
+2021-01-21 21:46:10 INFO  CustomerController:35 - id:3 first name:jason surname:kyle
+2021-01-21 21:47:43 INFO  Ims:32 - What is your username
+2021-01-21 21:47:45 INFO  Ims:34 - What is your password
+2021-01-21 21:47:47 DEBUG Ims:138 - java.base/java.io.FileInputStream.open0(Native Method)
+2021-01-21 21:47:47 DEBUG Ims:138 - java.base/java.io.FileInputStream.open(FileInputStream.java:212)
+2021-01-21 21:47:47 DEBUG Ims:138 - java.base/java.io.FileInputStream.<init>(FileInputStream.java:154)
+2021-01-21 21:47:47 DEBUG Ims:138 - java.base/java.io.FileInputStream.<init>(FileInputStream.java:109)
+2021-01-21 21:47:47 DEBUG Ims:138 - java.base/java.io.FileReader.<init>(FileReader.java:60)
+2021-01-21 21:47:47 DEBUG Ims:138 - com.qa.ims.Ims.init(Ims.java:129)
+2021-01-21 21:47:47 DEBUG Ims:138 - com.qa.ims.Ims.init(Ims.java:104)
+2021-01-21 21:47:47 DEBUG Ims:138 - com.qa.ims.Ims.imsSystem(Ims.java:37)
+2021-01-21 21:47:47 DEBUG Ims:138 - com.qa.ims.Runner.main(Runner.java:11)
+2021-01-21 21:47:47 ERROR Ims:140 - src\main\resources\sql-schema.sql (The system cannot find the path specified)
+2021-01-21 21:47:47 INFO  Ims:39 - Which entity would you like to use?
+2021-01-21 21:47:47 INFO  Domain:28 - CUSTOMER: Information about customers
+2021-01-21 21:47:47 INFO  Domain:28 - ITEM: Individual Items
+2021-01-21 21:47:47 INFO  Domain:28 - ORDER: Purchases of items
+2021-01-21 21:47:47 INFO  Domain:28 - STOP: To close the application
+2021-01-21 21:47:52 INFO  Ims:43 - What would you like to do with item:
+2021-01-21 21:47:52 INFO  Action:40 - CREATE: To save a new item into the database
+2021-01-21 21:47:52 INFO  Action:40 - READ: To read an item from the database
+2021-01-21 21:47:52 INFO  Action:40 - UPDATE: To change an item already in the database
+2021-01-21 21:47:52 INFO  Action:40 - DELETE: To remove an item from the database
+2021-01-21 21:47:52 INFO  Action:40 - RETURN: To return to domain selection
+2021-01-21 21:47:54 INFO  ItemController:39 - id:1 name of item:FIFA 21 amount:49.99
+2021-01-21 21:47:54 INFO  ItemController:39 - id:2 name of item:C.O.D amount:45.99
+2021-01-21 21:47:54 INFO  ItemController:39 - id:5 name of item:spongebob amount:5.99
+2021-01-22 10:16:56 INFO  Ims:32 - What is your username
+2021-01-22 10:16:58 INFO  Ims:34 - What is your password
+2021-01-22 10:17:00 DEBUG Ims:138 - java.base/java.io.FileInputStream.open0(Native Method)
+2021-01-22 10:17:00 DEBUG Ims:138 - java.base/java.io.FileInputStream.open(FileInputStream.java:212)
+2021-01-22 10:17:00 DEBUG Ims:138 - java.base/java.io.FileInputStream.<init>(FileInputStream.java:154)
+2021-01-22 10:17:00 DEBUG Ims:138 - java.base/java.io.FileInputStream.<init>(FileInputStream.java:109)
+2021-01-22 10:17:00 DEBUG Ims:138 - java.base/java.io.FileReader.<init>(FileReader.java:60)
+2021-01-22 10:17:00 DEBUG Ims:138 - com.qa.ims.Ims.init(Ims.java:129)
+2021-01-22 10:17:00 DEBUG Ims:138 - com.qa.ims.Ims.init(Ims.java:104)
+2021-01-22 10:17:00 DEBUG Ims:138 - com.qa.ims.Ims.imsSystem(Ims.java:37)
+2021-01-22 10:17:00 DEBUG Ims:138 - com.qa.ims.Runner.main(Runner.java:11)
+2021-01-22 10:17:00 ERROR Ims:140 - src\main\resources\sql-schema.sql (The system cannot find the path specified)
+2021-01-22 10:17:00 INFO  Ims:39 - Which entity would you like to use?
+2021-01-22 10:17:00 INFO  Domain:28 - CUSTOMER: Information about customers
+2021-01-22 10:17:00 INFO  Domain:28 - ITEM: Individual Items
+2021-01-22 10:17:00 INFO  Domain:28 - ORDER: Purchases of items
+2021-01-22 10:17:00 INFO  Domain:28 - STOP: To close the application
+2021-01-22 10:17:09 INFO  Ims:43 - What would you like to do with customer:
+2021-01-22 10:17:09 INFO  Action:40 - CREATE: To save a new item into the database
+2021-01-22 10:17:09 INFO  Action:40 - READ: To read an item from the database
+2021-01-22 10:17:09 INFO  Action:40 - UPDATE: To change an item already in the database
+2021-01-22 10:17:09 INFO  Action:40 - DELETE: To remove an item from the database
+2021-01-22 10:17:09 INFO  Action:40 - RETURN: To return to domain selection
+2021-01-22 10:17:11 INFO  CustomerController:35 - id:1 first name:Sarah surname:smith
+2021-01-22 10:17:11 INFO  CustomerController:35 - id:2 first name:beyonce surname:knowles
+2021-01-22 10:17:11 INFO  CustomerController:35 - id:3 first name:jason surname:kyle
+2021-01-22 11:17:53 INFO  Ims:32 - What is your username
+2021-01-22 11:17:56 INFO  Ims:34 - What is your password
+2021-01-22 11:17:58 DEBUG Ims:138 - java.base/java.io.FileInputStream.open0(Native Method)
+2021-01-22 11:17:58 DEBUG Ims:138 - java.base/java.io.FileInputStream.open(FileInputStream.java:212)
+2021-01-22 11:17:58 DEBUG Ims:138 - java.base/java.io.FileInputStream.<init>(FileInputStream.java:154)
+2021-01-22 11:17:58 DEBUG Ims:138 - java.base/java.io.FileInputStream.<init>(FileInputStream.java:109)
+2021-01-22 11:17:58 DEBUG Ims:138 - java.base/java.io.FileReader.<init>(FileReader.java:60)
+2021-01-22 11:17:58 DEBUG Ims:138 - com.qa.ims.Ims.init(Ims.java:129)
+2021-01-22 11:17:58 DEBUG Ims:138 - com.qa.ims.Ims.init(Ims.java:104)
+2021-01-22 11:17:58 DEBUG Ims:138 - com.qa.ims.Ims.imsSystem(Ims.java:37)
+2021-01-22 11:17:58 DEBUG Ims:138 - com.qa.ims.Runner.main(Runner.java:11)
+2021-01-22 11:17:58 ERROR Ims:140 - src\main\resources\sql-schema.sql (The system cannot find the path specified)
+2021-01-22 11:17:58 INFO  Ims:39 - Which entity would you like to use?
+2021-01-22 11:17:58 INFO  Domain:28 - CUSTOMER: Information about customers
+2021-01-22 11:17:58 INFO  Domain:28 - ITEM: Individual Items
+2021-01-22 11:17:58 INFO  Domain:28 - ORDER: Purchases of items
+2021-01-22 11:17:58 INFO  Domain:28 - STOP: To close the application
+2021-01-22 11:18:04 INFO  Ims:43 - What would you like to do with item:
+2021-01-22 11:18:04 INFO  Action:40 - CREATE: To save a new item into the database
+2021-01-22 11:18:04 INFO  Action:40 - READ: To read an item from the database
+2021-01-22 11:18:04 INFO  Action:40 - UPDATE: To change an item already in the database
+2021-01-22 11:18:04 INFO  Action:40 - DELETE: To remove an item from the database
+2021-01-22 11:18:04 INFO  Action:40 - RETURN: To return to domain selection
+2021-01-22 11:18:08 INFO  ItemController:39 - id:1 name of item:FIFA 21 amount:49.99
+2021-01-22 11:18:08 INFO  ItemController:39 - id:2 name of item:C.O.D amount:45.99
+2021-01-22 11:18:08 INFO  ItemController:39 - id:5 name of item:spongebob amount:5.99
+2021-01-22 12:05:11 INFO  Ims:32 - What is your username
+2021-01-22 12:05:14 INFO  Ims:34 - What is your password
+2021-01-22 12:05:17 DEBUG Ims:138 - java.base/java.io.FileInputStream.open0(Native Method)
+2021-01-22 12:05:17 DEBUG Ims:138 - java.base/java.io.FileInputStream.open(FileInputStream.java:212)
+2021-01-22 12:05:17 DEBUG Ims:138 - java.base/java.io.FileInputStream.<init>(FileInputStream.java:154)
+2021-01-22 12:05:17 DEBUG Ims:138 - java.base/java.io.FileInputStream.<init>(FileInputStream.java:109)
+2021-01-22 12:05:17 DEBUG Ims:138 - java.base/java.io.FileReader.<init>(FileReader.java:60)
+2021-01-22 12:05:17 DEBUG Ims:138 - com.qa.ims.Ims.init(Ims.java:129)
+2021-01-22 12:05:17 DEBUG Ims:138 - com.qa.ims.Ims.init(Ims.java:104)
+2021-01-22 12:05:17 DEBUG Ims:138 - com.qa.ims.Ims.imsSystem(Ims.java:37)
+2021-01-22 12:05:17 DEBUG Ims:138 - com.qa.ims.Runner.main(Runner.java:11)
+2021-01-22 12:05:17 ERROR Ims:140 - src\main\resources\sql-schema.sql (The system cannot find the path specified)
+2021-01-22 12:05:17 INFO  Ims:39 - Which entity would you like to use?
+2021-01-22 12:05:17 INFO  Domain:28 - CUSTOMER: Information about customers
+2021-01-22 12:05:17 INFO  Domain:28 - ITEM: Individual Items
+2021-01-22 12:05:17 INFO  Domain:28 - ORDER: Purchases of items
+2021-01-22 12:05:17 INFO  Domain:28 - STOP: To close the application
+2021-01-22 12:05:30 INFO  Ims:43 - What would you like to do with item:
+2021-01-22 12:05:30 INFO  Action:40 - CREATE: To save a new item into the database
+2021-01-22 12:05:30 INFO  Action:40 - READ: To read an item from the database
+2021-01-22 12:05:30 INFO  Action:40 - UPDATE: To change an item already in the database
+2021-01-22 12:05:30 INFO  Action:40 - DELETE: To remove an item from the database
+2021-01-22 12:05:30 INFO  Action:40 - RETURN: To return to domain selection
+2021-01-22 12:05:40 INFO  ItemController:46 - Please Enter a Title of game
+2021-01-22 12:05:47 INFO  ItemController:48 - Please enter a Price
+2021-01-22 12:05:51 INFO  ItemController:51 - Item Added
+2021-01-22 12:06:00 INFO  Ims:32 - What is your username
+2021-01-22 12:06:01 INFO  Ims:34 - What is your password
+2021-01-22 12:06:03 DEBUG Ims:138 - java.base/java.io.FileInputStream.open0(Native Method)
+2021-01-22 12:06:03 DEBUG Ims:138 - java.base/java.io.FileInputStream.open(FileInputStream.java:212)
+2021-01-22 12:06:03 DEBUG Ims:138 - java.base/java.io.FileInputStream.<init>(FileInputStream.java:154)
+2021-01-22 12:06:03 DEBUG Ims:138 - java.base/java.io.FileInputStream.<init>(FileInputStream.java:109)
+2021-01-22 12:06:03 DEBUG Ims:138 - java.base/java.io.FileReader.<init>(FileReader.java:60)
+2021-01-22 12:06:03 DEBUG Ims:138 - com.qa.ims.Ims.init(Ims.java:129)
+2021-01-22 12:06:03 DEBUG Ims:138 - com.qa.ims.Ims.init(Ims.java:104)
+2021-01-22 12:06:03 DEBUG Ims:138 - com.qa.ims.Ims.imsSystem(Ims.java:37)
+2021-01-22 12:06:03 DEBUG Ims:138 - com.qa.ims.Runner.main(Runner.java:11)
+2021-01-22 12:06:03 ERROR Ims:140 - src\main\resources\sql-schema.sql (The system cannot find the path specified)
+2021-01-22 12:06:03 INFO  Ims:39 - Which entity would you like to use?
+2021-01-22 12:06:03 INFO  Domain:28 - CUSTOMER: Information about customers
+2021-01-22 12:06:03 INFO  Domain:28 - ITEM: Individual Items
+2021-01-22 12:06:03 INFO  Domain:28 - ORDER: Purchases of items
+2021-01-22 12:06:03 INFO  Domain:28 - STOP: To close the application
+2021-01-22 12:06:06 INFO  Ims:43 - What would you like to do with item:
+2021-01-22 12:06:06 INFO  Action:40 - CREATE: To save a new item into the database
+2021-01-22 12:06:06 INFO  Action:40 - READ: To read an item from the database
+2021-01-22 12:06:06 INFO  Action:40 - UPDATE: To change an item already in the database
+2021-01-22 12:06:06 INFO  Action:40 - DELETE: To remove an item from the database
+2021-01-22 12:06:06 INFO  Action:40 - RETURN: To return to domain selection
+2021-01-22 12:06:08 INFO  ItemController:39 - id:1 name of item:FIFA 21 amount:49.99
+2021-01-22 12:06:08 INFO  ItemController:39 - id:2 name of item:C.O.D amount:45.99
+2021-01-22 12:06:08 INFO  ItemController:39 - id:5 name of item:spongebob amount:5.99
+2021-01-22 12:06:08 INFO  ItemController:39 - id:6 name of item:barbie amount:2.99
